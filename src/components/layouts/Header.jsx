@@ -1,10 +1,10 @@
-import { BsCart2 } from "react-icons/bs";
-import { AiOutlineHeart } from "react-icons/ai";
-import { IoIosArrowDown } from "react-icons/io";
-import { BiSearch } from "react-icons/bi";
 import Link from "next/link";
-import { MainContainer } from "../ui/MainContainer";
 import Image from "next/image";
+import { BsCart2 } from "react-icons/bs";
+import { BiSearch } from "react-icons/bi";
+import { IoIosArrowDown } from "react-icons/io";
+import { AiOutlineHeart } from "react-icons/ai";
+import { MainContainer } from "../ui/MainContainer";
 import { TwoBackgroundBlocks } from "../ui/TwoBackgroundBlocks";
 
 const navLinks = [
@@ -22,14 +22,9 @@ export function Header() {
         <nav className="flex mt-[40px] items-center z-20 w-[1240px] mx-auto">
           <span className="font-bold text-2xl mr-[41px]">Funiro.</span>
 
-          {/* заглушка-шаблон для ссылок */}
           <ul className="text-cblack hidden items-center gap-8 text-sm font-semibold sm:flex">
             {navLinks.map((link) => (
-              <li
-                key={link.id}
-                className="cursor-pointer pt-1 transition hover:border-b-2 hover:border-cmain"
-              >
-                {/* Link to section  */}
+              <li key={link.id} className="cursor-pointer pt-1 transition ">
                 <Link href={link.section} className="flex gap-2 items-center">
                   {link.title}
                   {link.dropdown && (
@@ -57,13 +52,14 @@ export function Header() {
 
           {/* User Navigation  */}
           <div className="flex items-center gap-8 w-[152px]">
-            <AiOutlineHeart className="size-6" />
-            <BsCart2 className="size-6" />
+            <AiOutlineHeart className="size-6 cursor-pointer" />
+            <BsCart2 className="size-6 cursor-pointer" />
             <Image
               width="40"
               height="40"
               src="/images/header/profile_icon.png"
               alt="user icon"
+              className="cursor-pointer"
             />
           </div>
         </nav>

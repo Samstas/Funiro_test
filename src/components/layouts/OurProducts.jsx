@@ -1,112 +1,22 @@
+"use client";
+
 import Image from "next/image";
-
-const products = [
-  {
-    id: 1,
-    title: "Syltherine",
-    desc: "Stylish cafe chair",
-    currPrice: "Rp 2.500.000",
-    prevPrice: "Rp 3.500.000",
-    isNew: false,
-    discount: 30,
-    productImg: "/images/our_products/product1.png",
-  },
-  {
-    id: 2,
-    title: "Leviosa",
-    desc: "Stylish cafe chair",
-    currPrice: "Rp 2.500.000",
-    prevPrice: null,
-    isNew: false,
-    discount: null,
-    productImg: "/images/our_products/product2.png",
-  },
-  {
-    id: 3,
-    title: "Lolito",
-    desc: "Luxury big sofa",
-    currPrice: "Rp 7.000.000",
-    prevPrice: "Rp 14.000.000",
-    isNew: false,
-    discount: 50,
-    productImg: "/images/our_products/product3.png",
-  },
-  {
-    id: 4,
-    title: "Respira",
-    desc: "Minimalist fan",
-    currPrice: "Rp 500.000",
-    prevPrice: null,
-    isNew: true,
-    discount: null,
-    productImg: "/images/our_products/product4.png",
-  },
-  {
-    id: 5,
-    title: "Grifo",
-    desc: "Night lamp",
-    currPrice: "Rp 1.500.000",
-    prevPrice: null,
-    isNew: false,
-    discount: null,
-    productImg: "/images/our_products/product5.png",
-  },
-  {
-    id: 6,
-    title: "Muggo",
-    desc: "Small mug",
-    currPrice: "Rp 150.000",
-    prevPrice: null,
-    isNew: true,
-    discount: null,
-    productImg: "/images/our_products/product6.png",
-  },
-  {
-    id: 7,
-    title: "Pingky",
-    desc: "Cute bed set",
-    currPrice: "Rp 7.000.000",
-    prevPrice: "Rp 14.000.000",
-    isNew: false,
-    discount: 50,
-    productImg: "/images/our_products/product7.png",
-  },
-  {
-    id: 8,
-    title: "Potty",
-    desc: "Minimalist flower pot",
-    currPrice: "Rp 500.000",
-    prevPrice: null,
-    isNew: true,
-    discount: null,
-    productImg: "/images/our_products/product8.png",
-  },
-];
-
-// TODO: если есть скидка в товаре тогда - вычесть процент discount из prevPrice
+import { products } from "@/constants/global";
+import { SectionHeading } from "../ui/SectionHeading";
 
 export function OurProducts() {
   return (
-    <section className="w-full flex flex-col items-center">
-      <h2 className="text-gray1 text-section_h2 font-bold mb-8 mt-[88px] ">
-        Our Products
-      </h2>
-
-      {/*   id: 1,
-            productImg: "",
-            title: "Syltherine",
-            desc: "Stylish cafe chair",
-            currPrice: "Rp 2.500.000",
-            prevPrice: "Rp 3.500.000",
-            isNew: false,
-            discount: 30, 
-    */}
+    <section id="products" className="w-full flex flex-col items-center">
+      <SectionHeading>Our Products</SectionHeading>
 
       <ul className="flex flex-wrap gap-8 justify-center">
-        {/* width 285px card  height 446px  */}
-
         {products.map((product) => (
-          <li key={product.id} className="w-[285px] h-[446px]">
+          <li
+            key={product.id}
+            className="w-[285px] h-[446px] cursor-pointer relative"
+          >
+            <div className=" w-full h-full absolute top-0 left-0">overlay</div>
+
             <div className="relative">
               <Image
                 src={product.productImg}
@@ -152,7 +62,7 @@ export function OurProducts() {
         ))}
       </ul>
 
-      <button className="border border-primary py-3 px-[82px] text-primary mt-8">
+      <button className="border hover:text-white hover:bg-primary transition border-primary py-3 px-[82px] text-primary mt-8">
         Show More
       </button>
     </section>
